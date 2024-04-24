@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "147390672460",
+    "firebase_url": "https://electronicmagazine-e0802-default-rtdb.firebaseio.com",
+    "project_id": "electronicmagazine-e0802",
+    "storage_bucket": "electronicmagazine-e0802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147390672460:android:d25cce1bcff6da47b4cee9",
+        "android_client_info": {
+          "package_name": "com.example.electronic_magazine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlQw8EwN4Qq8_9TbnIBU3D08Kjq_XnRLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

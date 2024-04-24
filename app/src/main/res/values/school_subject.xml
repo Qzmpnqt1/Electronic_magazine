@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="school_subject">
+        <item>Алгебра</item>
+        <item>Английский язык</item>
+        <item>Биология</item>
+        <item>География</item>
+        <item>Геометрия</item>
+        <item>ИЗО</item>
+        <item>Информатика</item>
+        <item>История</item>
+        <item>Литература</item>
+        <item>Математика</item>
+        <item>Музыка</item>
+        <item>Обществознание</item>
+        <item>ОБЖ</item>
+        <item>Окружающий мир</item>
+        <item>Русский язык</item>
+        <item>Технология</item>
+        <item>Физика</item>
+        <item>Физкультура</item>
+        <item>Химия</item>
+    </string-array>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="class_number">
+        <item>1 класс</item>
+        <item>2 класс</item>
+        <item>3 класс</item>
+        <item>4 класс</item>
+        <item>5 класс</item>
+        <item>6 класс</item>
+        <item>7 класс</item>
+        <item>8 класс</item>
+        <item>9 класс</item>
+        <item>10 класс</item>
+        <item>11 класс</item>
+    </string-array>
+</resources>

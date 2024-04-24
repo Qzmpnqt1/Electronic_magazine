@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Electronic_magazine</string>
+    <string name="main_textView">Выберите нужный раздел</string>
+    <string name="teacher">Учитель</string>
+    <string name="student">Ученик</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="teacher_or_student_data">Если вы учитель, то введите предмет, который вы ведете, если ученик, то класс, в котором вы обучаетесь:</string>
+</resources>

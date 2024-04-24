@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/графитно_черный"
+    tools:context=".DataEntryActivity">
+
+    <EditText
+        android:id="@+id/edFullName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:hint="Введите ФИО"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RadioGroup
+        android:id="@+id/rgRole"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/edFullName"
+        app:layout_constraintStart_toStartOf="@+id/edFullName"
+        app:layout_constraintTop_toBottomOf="@id/edFullName">
+
+        <RadioButton
+            android:id="@+id/rbTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="Учитель"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/rbStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Ученик"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+    </RadioGroup>
+
+
+    <Spinner
+        android:id="@+id/spSubjectOrSchoolClass"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toEndOf="@+id/rgRole"
+        app:layout_constraintStart_toStartOf="@+id/rgRole"
+        app:layout_constraintTop_toBottomOf="@+id/rgRole" />
+
+    <Button
+        android:id="@+id/bСompliteSignUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:onClick="onClickSaveData"
+        android:text="Ввести данные"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/rgRole"
+        app:layout_constraintStart_toStartOf="@+id/rgRole"
+        app:layout_constraintTop_toBottomOf="@+id/spSubjectOrSchoolClass" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
