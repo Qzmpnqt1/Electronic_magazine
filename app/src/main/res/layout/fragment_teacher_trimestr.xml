@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/графитно_черный"
+        tools:context=".TeacherTrimesterFragment">
+
+        <LinearLayout
+            android:id="@+id/firstTrimesterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvFirstTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Первый триместр"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/tvDisplayingRatingsFirstTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/tvFirstTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvFirstTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvFirstTrimester" />
+
+            <Spinner
+                android:id="@+id/spMark1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsFirstTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsFirstTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsFirstTrimester"/>
+
+            <Button
+                android:id="@+id/bFirstTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Сохранить оценку"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/edGradingFirstTrimester"
+                app:layout_constraintStart_toStartOf="@+id/edGradingFirstTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/edGradingFirstTrimester" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondTrimesterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstTrimesterLayout">
+
+            <TextView
+                android:id="@+id/tvSecondTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Второй триместр"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/tvDisplayingRatingsSecondTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/tvSecondTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvSecondTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvSecondTrimester" />
+
+            <Spinner
+                android:id="@+id/spMark2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsSecondTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsSecondTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsSecondTrimester"/>
+
+            <Button
+                android:id="@+id/bSecondTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Сохранить оценку"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/edGradingSecondTrimester"
+                app:layout_constraintStart_toStartOf="@+id/edGradingSecondTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/edGradingSecondTrimester" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdTrimesterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondTrimesterLayout">
+
+            <TextView
+                android:id="@+id/tvThirdTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Третий триместр"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/tvDisplayingRatingsThirdTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/tvThirdTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvThirdTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvThirdTrimester" />
+
+            <Spinner
+                android:id="@+id/spMark3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsThirdTrimester"
+                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsThirdTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsThirdTrimester"/>
+
+            <Button
+                android:id="@+id/bThirdTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Сохранить оценку"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/edGradingThirdTrimester"
+                app:layout_constraintStart_toStartOf="@+id/edGradingThirdTrimester"
+                app:layout_constraintTop_toBottomOf="@+id/edGradingThirdTrimester" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
