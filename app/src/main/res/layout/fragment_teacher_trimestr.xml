@@ -32,7 +32,8 @@
                 android:gravity="center"
                 android:text="Первый триместр"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="" />
 
             <TextView
                 android:id="@+id/tvDisplayingRatingsFirstTrimester"
@@ -40,19 +41,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/tvFirstTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvFirstTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvFirstTrimester" />
+                android:textColor="@color/white" />
 
             <Spinner
                 android:id="@+id/spMark1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:id="@+id/tvAverageMarkFirstTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsFirstTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsFirstTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsFirstTrimester"/>
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkFirstTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bFirstTrimester"
@@ -96,19 +107,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/tvSecondTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvSecondTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvSecondTrimester" />
+                android:textColor="@color/white" />
 
             <Spinner
                 android:id="@+id/spMark2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:id="@+id/tvAverageMarkSecondTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsSecondTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsSecondTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsSecondTrimester"/>
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkSecondTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bSecondTrimester"
@@ -116,10 +137,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Сохранить оценку"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/edGradingSecondTrimester"
-                app:layout_constraintStart_toStartOf="@+id/edGradingSecondTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/edGradingSecondTrimester" />
+                android:textSize="16sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -153,19 +172,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/tvThirdTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvThirdTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvThirdTrimester" />
+                android:textColor="@color/white" />
 
             <Spinner
                 android:id="@+id/spMark3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:id="@+id/tvAverageMarkThirdTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvDisplayingRatingsThirdTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvDisplayingRatingsThirdTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvDisplayingRatingsThirdTrimester"/>
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkThirdTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bThirdTrimester"
@@ -173,10 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Сохранить оценку"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/edGradingThirdTrimester"
-                app:layout_constraintStart_toStartOf="@+id/edGradingThirdTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/edGradingThirdTrimester" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 

@@ -30,6 +30,7 @@ public class TeacherInterfaceFragment extends Fragment {
     private List<String> teacherClass;
     private ListView lvTeacherClass, lvStudentInClass;
     private ArrayAdapter<String> adapter;
+    private String teacherSubject, studentFullName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class TeacherInterfaceFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String teacherSubject = snapshot.child("subject").getValue(String.class);
+                    teacherSubject = snapshot.child("subject").getValue(String.class);
 
                     DatabaseReference classesRef = FirebaseDatabase.getInstance().getReference("subjectClasses").child(teacherSubject);
                     classesRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -68,7 +69,7 @@ public class TeacherInterfaceFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle cancelled event
+
             }
         });
 
@@ -97,7 +98,7 @@ public class TeacherInterfaceFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle cancelled event
+
                     }
                 });
             }
@@ -106,9 +107,16 @@ public class TeacherInterfaceFragment extends Fragment {
         lvStudentInClass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Bundle bundle = new Bundle();
+                studentFullName = adapterView.getItemAtPosition(i).toString();
+                bundle.putString("teacherSubject", teacherSubject);
+                bundle.putString("studentFullName", studentFullName);
+
+                TeacherTrimesterFragment teacherTrimesterFragment = new TeacherTrimesterFragment();
+                teacherTrimesterFragment.setArguments(bundle);
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainerView, new TeacherTrimesterFragment())
+                        .replace(R.id.fragmentContainerView, teacherTrimesterFragment)
                         .commit();
             }
         });

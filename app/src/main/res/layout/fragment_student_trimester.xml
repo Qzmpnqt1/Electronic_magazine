@@ -39,10 +39,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvFirstTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvFirstTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvFirstTrimester" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvAverageMarkFirstTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkFirstTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -74,10 +88,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvSecondTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvSecondTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvSecondTrimester" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvAverageMarkSecondTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkSecondTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -111,10 +139,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvThirdTrimester"
-                app:layout_constraintStart_toStartOf="@+id/tvThirdTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/tvThirdTrimester" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvAverageMarkThirdTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvFinalMarkThirdTrimester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
             </LinearLayout>
 

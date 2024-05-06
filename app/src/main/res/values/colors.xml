@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="LemonChiffon">#FFFACD</color>
     <color name="Aqua">#00FFFF</color>
-    <color name="графитно_черный">#1F1F1F</color>>
+    <color name="графитно_черный">#1F1F1F</color>
+    <color name="BurlyWood">#DEB887</color>
 </resources>

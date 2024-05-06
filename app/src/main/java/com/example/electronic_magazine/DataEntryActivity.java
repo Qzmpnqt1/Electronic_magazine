@@ -86,27 +86,27 @@ public class DataEntryActivity extends AppCompatActivity {
         String fullName = binding.edFullName.getText().toString();
         String[] arrayFullName = fullName.split(" ");
 
-        if ((arrayFullName.length == 3) && (role != null)) {
+        if ((arrayFullName.length == 3) && (role != null) && (subjectOrSchoolClass != null)) {
             if (role.equals("Учитель")) {
                 Teacher teacher = new Teacher(fullName, subjectOrSchoolClass);
-
-                DatabaseReference databaseReference = firebaseDatabase.getReference(Constant.TEACHERS).child(userId);
-                databaseReference.setValue(teacher)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Intent intent = new Intent(DataEntryActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                removeSchoolSubject();
-                                Toast.makeText(DataEntryActivity.this, "Данные учителя успешно сохранены", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(DataEntryActivity.this, "Ошибка при сохранении данных" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    DatabaseReference databaseReference = firebaseDatabase.getReference(Constant.TEACHERS).child(userId);
+                    databaseReference.setValue(teacher)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Intent intent = new Intent(DataEntryActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    removeSchoolSubject();
+                                    Toast.makeText(DataEntryActivity.this, "Данные учителя успешно сохранены", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(DataEntryActivity.this, "Ошибка при сохранении данных" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
             }
             else if (role.equals("Ученик")) {
                 Student student = new Student(fullName, subjectOrSchoolClass);
@@ -128,10 +128,6 @@ public class DataEntryActivity extends AppCompatActivity {
                             }
                         });
             }
-        }
-        else {
-            Toast.makeText(this, "Заполните персональные данные полностью", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void loadSchoolSubject() {

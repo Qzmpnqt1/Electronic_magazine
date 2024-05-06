@@ -66,8 +66,14 @@ public class StudentInterfaceFragment extends Fragment {
         lv2StudentInClass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String subject = adapterView.getItemAtPosition(i).toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("subject", subject);
+                StudentTrimesterFragment studentTrimesterFragment = new StudentTrimesterFragment();
+                studentTrimesterFragment.setArguments(bundle);
+
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainerView, new StudentTrimesterFragment())
+                        .replace(R.id.fragmentContainerView, studentTrimesterFragment)
                         .commit();
             }
         });
