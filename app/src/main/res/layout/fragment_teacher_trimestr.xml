@@ -32,8 +32,7 @@
                 android:gravity="center"
                 android:text="Первый триместр"
                 android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tvDisplayingRatingsFirstTrimester"
@@ -71,10 +70,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Сохранить оценку"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/edGradingFirstTrimester"
-                app:layout_constraintStart_toStartOf="@+id/edGradingFirstTrimester"
-                app:layout_constraintTop_toBottomOf="@+id/edGradingFirstTrimester" />
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/bDeleteOrRefactorFirstTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Удалить/Изменить оценки"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -139,6 +143,14 @@
                 android:text="Сохранить оценку"
                 android:textSize="16sp" />
 
+            <Button
+                android:id="@+id/bDeleteOrRefactorSecondTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Удалить/Изменить оценки"
+                android:textSize="16sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -193,8 +205,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:textSize="20sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/bThirdTrimester"
@@ -202,6 +214,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Сохранить оценку"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/bDeleteOrRefactorThirdTrimester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Удалить/Изменить оценки"
                 android:textSize="16sp" />
 
         </LinearLayout>

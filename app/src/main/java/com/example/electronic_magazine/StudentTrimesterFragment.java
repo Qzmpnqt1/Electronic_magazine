@@ -96,7 +96,7 @@ public class StudentTrimesterFragment extends Fragment {
                     updateAverageMarkAndFinalMark("firstTrimester", firstTrimesterGrades);
                 }
                 else {
-                    binding.tvDisplayingRatingsFirstTrimester.setText("Не аттестация!");
+                    binding.tvDisplayingRatingsFirstTrimester.setHint("Не аттестация");
                     binding.tvAverageMarkFirstTrimester.setVisibility(View.GONE);
                     binding.tvFinalMarkFirstTrimester.setText("Итоговая оценка: 2");
                 }
@@ -110,7 +110,7 @@ public class StudentTrimesterFragment extends Fragment {
                     updateAverageMarkAndFinalMark("secondTrimester", secondTrimesterGrades);
                 }
                 else {
-                    binding.tvDisplayingRatingsSecondTrimester.setText("Не аттестация!");
+                    binding.tvDisplayingRatingsSecondTrimester.setHint("Не аттестация");
                     binding.tvAverageMarkSecondTrimester.setVisibility(View.GONE);
                     binding.tvFinalMarkSecondTrimester.setText("Итоговая оценка: 2");
                 }
@@ -124,7 +124,7 @@ public class StudentTrimesterFragment extends Fragment {
                     updateAverageMarkAndFinalMark("thirdTrimester", thirdTrimesterGrades);
                 }
                 else {
-                    binding.tvDisplayingRatingsThirdTrimester.setText("Не аттестация!");
+                    binding.tvDisplayingRatingsThirdTrimester.setHint("Не аттестация");
                     binding.tvAverageMarkThirdTrimester.setVisibility(View.GONE);
                     binding.tvFinalMarkThirdTrimester.setText("Итоговая оценка: 2");
                 }

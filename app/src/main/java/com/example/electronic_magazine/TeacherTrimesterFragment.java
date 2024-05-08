@@ -77,6 +77,36 @@ public class TeacherTrimesterFragment extends Fragment {
                 for (DataSnapshot studentSnapshot : dataSnapshot.getChildren()) {
                     // Найден узел студента
                     studentRef = studentSnapshot.getRef();
+                    if (studentRef != null) {
+                        DatabaseReference gradesRef = studentRef.child("grades").child(subject);
+                        gradesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                GenericTypeIndicator<HashMap<String, ArrayList<Grade>>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, ArrayList<Grade>>>() {};
+                                HashMap<String, ArrayList<Grade>> grades = dataSnapshot.getValue(genericTypeIndicator);
+                                if (grades == null || grades.get("firstTrimester") == null) {
+                                    binding.tvDisplayingRatingsFirstTrimester.setHint("Не аттестация");
+                                    binding.tvAverageMarkFirstTrimester.setText("Средний балл: 2");
+                                    binding.tvFinalMarkFirstTrimester.setText("Итоговая оценка: 2");
+                                }
+                                if (grades == null || grades.get("secondTrimester") == null) {
+                                    binding.tvDisplayingRatingsSecondTrimester.setHint("Не аттестация");
+                                    binding.tvAverageMarkSecondTrimester.setText("Средний балл: 2");
+                                    binding.tvFinalMarkSecondTrimester.setText("Итоговая оценка: 2");
+                                }
+                                if (grades == null || grades.get("thirdTrimester") == null) {
+                                    binding.tvDisplayingRatingsThirdTrimester.setHint("Не аттестация");
+                                    binding.tvAverageMarkThirdTrimester.setText("Средний балл: 2");
+                                    binding.tvFinalMarkThirdTrimester.setText("Итоговая оценка: 2");
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.e("TeacherTrimesterFragment", "onCancelled", databaseError.toException());
+                            }
+                        });
+                    }
                 }
 
                 // Загрузите оценки для текущего предмета
@@ -97,6 +127,21 @@ public class TeacherTrimesterFragment extends Fragment {
                 addGrade(subject, mark, "firstTrimester");
             }
         });
+
+        binding.bDeleteOrRefactorFirstTrimester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
+                Bundle args = new Bundle();
+                args.putString("teacherSubject", subject);
+                args.putString("studentFullName", studentFullName);
+                args.putString("trimester", "firstTrimester");
+                fragment.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainerView, fragment)
+                        .commit();
+            }
+        });
         //------------------------------------------------------------------------------------------
 
         //------------------------------------------------------------------------------------------
@@ -107,6 +152,21 @@ public class TeacherTrimesterFragment extends Fragment {
                 addGrade(subject, mark, "secondTrimester");
             }
         });
+
+        binding.bDeleteOrRefactorSecondTrimester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
+                Bundle args = new Bundle();
+                args.putString("teacherSubject", subject);
+                args.putString("studentFullName", studentFullName);
+                args.putString("trimester", "secondTrimester");
+                fragment.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainerView, fragment)
+                        .commit();
+            }
+        });
         //------------------------------------------------------------------------------------------
 
         //------------------------------------------------------------------------------------------
@@ -115,6 +175,21 @@ public class TeacherTrimesterFragment extends Fragment {
             public void onClick(View view) {
                 String mark = binding.spMark3.getSelectedItem().toString();
                 addGrade(subject, mark, "thirdTrimester");
+            }
+        });
+
+        binding.bDeleteOrRefactorThirdTrimester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
+                Bundle args = new Bundle();
+                args.putString("teacherSubject", subject);
+                args.putString("studentFullName", studentFullName);
+                args.putString("trimester", "thirdTrimester");
+                fragment.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainerView, fragment)
+                        .commit();
             }
         });
         //------------------------------------------------------------------------------------------
@@ -141,11 +216,6 @@ public class TeacherTrimesterFragment extends Fragment {
                     binding.tvDisplayingRatingsFirstTrimester.setText(marksString);
                     updateAverageMarkAndFinalMark("firstTrimester", firstTrimesterGrades);
                 }
-                else {
-                    binding.tvDisplayingRatingsFirstTrimester.setHint("Не аттестация");
-                    binding.tvAverageMarkFirstTrimester.setVisibility(View.GONE);
-                    binding.tvFinalMarkFirstTrimester.setText("Итоговая оценка: 2");
-                }
 
                 // Отобразите оценки за второй триместр
                 ArrayList<Grade> secondTrimesterGrades = grades.get("secondTrimester");
@@ -155,12 +225,6 @@ public class TeacherTrimesterFragment extends Fragment {
                     binding.tvDisplayingRatingsSecondTrimester.setText(marksString);
                     updateAverageMarkAndFinalMark("secondTrimester", secondTrimesterGrades);
                 }
-                else {
-                    binding.tvDisplayingRatingsSecondTrimester.setHint("Не аттестация");
-                    binding.tvAverageMarkSecondTrimester.setVisibility(View.GONE);
-                    binding.tvFinalMarkSecondTrimester.setText("Итоговая оценка: 2");
-                }
-
                 // Отобразите оценки за третий триместр
                 ArrayList<Grade> thirdTrimesterGrades = grades.get("thirdTrimester");
                 if (thirdTrimesterGrades != null) {
@@ -168,11 +232,6 @@ public class TeacherTrimesterFragment extends Fragment {
                     String marksString = String.join("   ", marksStrings);
                     binding.tvDisplayingRatingsThirdTrimester.setText(marksString);
                     updateAverageMarkAndFinalMark("thirdTrimester", thirdTrimesterGrades);
-                }
-                else {
-                    binding.tvDisplayingRatingsThirdTrimester.setHint("Не аттестация");
-                    binding.tvAverageMarkThirdTrimester.setVisibility(View.GONE);
-                    binding.tvFinalMarkThirdTrimester.setText("Итоговая оценка: 2");
                 }
             }
 
@@ -240,6 +299,9 @@ public class TeacherTrimesterFragment extends Fragment {
                     // Выведите сообщение об ошибке
                     Toast.makeText(getContext(), "Максимальное количество оценок за неделю достигнуто", Toast.LENGTH_SHORT).show();
                 }
+
+                gradesRef.setValue(marks);
+                updateAverageMarkAndFinalMark(trimester, marks);
             }
 
             @Override
@@ -295,20 +357,26 @@ public class TeacherTrimesterFragment extends Fragment {
     private void showFirstTrimester() {
         binding.spMark2.setVisibility(View.GONE);
         binding.bSecondTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorSecondTrimester.setVisibility(View.GONE);
         binding.spMark3.setVisibility(View.GONE);
         binding.bThirdTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorThirdTrimester.setVisibility(View.GONE);
     }
 
     private void showSecondTrimester() {
         binding.spMark1.setVisibility(View.GONE);
         binding.bFirstTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorFirstTrimester.setVisibility(View.GONE);
         binding.spMark3.setVisibility(View.GONE);
         binding.bThirdTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorThirdTrimester.setVisibility(View.GONE);
     }
     private void showThirdTrimester() {
         binding.spMark1.setVisibility(View.GONE);
         binding.bFirstTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorFirstTrimester.setVisibility(View.GONE);
         binding.spMark2.setVisibility(View.GONE);
         binding.bSecondTrimester.setVisibility(View.GONE);
+        binding.bDeleteOrRefactorSecondTrimester.setVisibility(View.GONE);
     }
 }
