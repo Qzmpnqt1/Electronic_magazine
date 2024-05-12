@@ -74,6 +74,7 @@ public class StudentInterfaceFragment extends Fragment {
 
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainerView, studentTrimesterFragment)
+                        .addToBackStack(null)
                         .commit();
             }
         });

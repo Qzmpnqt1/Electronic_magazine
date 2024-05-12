@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ActivityMainBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        DatabaseReference studentRef = firebaseDatabase.getReference(Constant.STUDENTS).child(userId);
+        DatabaseReference studentRef = firebaseDatabase.getReference("students").child(userId);
         studentRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intentStudentInterface);
                 }
                 else {
-                    DatabaseReference teacherRef = firebaseDatabase.getReference(Constant.TEACHERS).child(userId);
+                    DatabaseReference teacherRef = firebaseDatabase.getReference("teachers").child(userId);
                     teacherRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {

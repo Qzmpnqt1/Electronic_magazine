@@ -84,6 +84,7 @@ public class StudentTrimesterFragment extends Fragment {
                 GenericTypeIndicator<HashMap<String, ArrayList<Grade>>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, ArrayList<Grade>>>() {};
                 HashMap<String, ArrayList<Grade>> grades = dataSnapshot.getValue(genericTypeIndicator);
                 if (grades == null) {
+                    setInformationAndFinalMark();
                     return;
                 }
 
@@ -178,5 +179,17 @@ public class StudentTrimesterFragment extends Fragment {
 
     private String calculateFinalMark(float averageMark) {
         return String.valueOf(Math.round(averageMark));
+    }
+
+    private void setInformationAndFinalMark() {
+        binding.tvDisplayingRatingsFirstTrimester.setHint("Не аттестация");
+        binding.tvAverageMarkFirstTrimester.setVisibility(View.GONE);
+        binding.tvFinalMarkFirstTrimester.setText("Итоговая оценка: 2");
+        binding.tvDisplayingRatingsSecondTrimester.setHint("Не аттестация");
+        binding.tvAverageMarkSecondTrimester.setVisibility(View.GONE);
+        binding.tvFinalMarkSecondTrimester.setText("Итоговая оценка: 2");
+        binding.tvDisplayingRatingsThirdTrimester.setHint("Не аттестация");
+        binding.tvAverageMarkThirdTrimester.setVisibility(View.GONE);
+        binding.tvFinalMarkThirdTrimester.setText("Итоговая оценка: 2");
     }
 }

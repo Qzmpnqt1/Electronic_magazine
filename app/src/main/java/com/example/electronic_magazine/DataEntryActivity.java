@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ public class DataEntryActivity extends AppCompatActivity {
     private List<String> classNumberList = Arrays.asList("1 класс", "2 класс", "3 класс", "4 класс", "5 класс",
             "6 класс", "7 класс", "8 класс", "9 класс", "10 класс", "11 класс");
     private String subjectOrSchoolClass, role;
+    private final int maxClassSize = 10;
+    private boolean classSizeNormal = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class DataEntryActivity extends AppCompatActivity {
         actionBar.setTitle("Заполнение личных данных");
 
         loadSchoolSubject();
-        
+
         binding.rgRole.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
@@ -64,6 +67,9 @@ public class DataEntryActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 subjectOrSchoolClass = adapterView.getItemAtPosition(position).toString();
+                if (role.equals("Ученик")) {
+                    checkClassSize();
+                }
             }
 
             @Override
@@ -85,11 +91,13 @@ public class DataEntryActivity extends AppCompatActivity {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String fullName = binding.edFullName.getText().toString();
         String[] arrayFullName = fullName.split(" ");
+        checkClassSize();
 
-        if ((arrayFullName.length == 3) && (role != null) && (subjectOrSchoolClass != null)) {
+        if ((arrayFullName.length == 3) && (role != null) && (subjectOrSchoolClass != null) && !subjectOrSchoolClass.equals(" ")) {
             if (role.equals("Учитель")) {
                 Teacher teacher = new Teacher(fullName, subjectOrSchoolClass);
-                    DatabaseReference databaseReference = firebaseDatabase.getReference(Constant.TEACHERS).child(userId);
+
+                    DatabaseReference databaseReference = firebaseDatabase.getReference("students").child(userId);
                     databaseReference.setValue(teacher)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -106,12 +114,11 @@ public class DataEntryActivity extends AppCompatActivity {
                                     Toast.makeText(DataEntryActivity.this, "Ошибка при сохранении данных" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-                }
             }
-            else if (role.equals("Ученик")) {
+            else if (role.equals("Ученик") && classSizeNormal) {
                 Student student = new Student(fullName, subjectOrSchoolClass);
 
-                DatabaseReference databaseReference = firebaseDatabase.getReference(Constant.STUDENTS).child(userId);
+                DatabaseReference databaseReference = firebaseDatabase.getReference("students").child(userId);
                 databaseReference.setValue(student)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -128,6 +135,16 @@ public class DataEntryActivity extends AppCompatActivity {
                             }
                         });
             }
+        }
+        else {
+            if (subjectOrSchoolClass.equals(" ")) {
+                Toast.makeText(this, "Нельзя зарегестрироваться как учитель", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Введите данные полностью", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     public void loadSchoolSubject() {
@@ -135,7 +152,7 @@ public class DataEntryActivity extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference();
 
         schoolSubjectList = new ArrayList<>();
-        databaseReference.child(Constant.FULL_SCHOOL_SUBJECTS).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("fullSchoolSubject").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot subjectSnapshot: snapshot.getChildren()) {
@@ -143,6 +160,9 @@ public class DataEntryActivity extends AppCompatActivity {
                     if ((boolean) subjectMap.get("isAvailable")) {
                         schoolSubjectList.add((String) subjectMap.get("name"));
                     }
+                }
+                if (schoolSubjectList.isEmpty()) {
+                    schoolSubjectList.add(" ");
                 }
             }
 
@@ -161,7 +181,7 @@ public class DataEntryActivity extends AppCompatActivity {
         final String selectedSubject = subjectToRemove;
 
         // Обновляем значение "isAvailable" для выбранного предмета
-        databaseReference.child(Constant.FULL_SCHOOL_SUBJECTS).orderByChild("name").equalTo(subjectToRemove)
+        databaseReference.child("fullSchoolSubject").orderByChild("name").equalTo(subjectToRemove)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -172,6 +192,32 @@ public class DataEntryActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void checkClassSize() {
+        DatabaseReference studentsRef = FirebaseDatabase.getInstance().getReference("students");
+        Query query = studentsRef.orderByChild("schoolClass").equalTo(subjectOrSchoolClass);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int classSize = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    classSize += 1;
+                }
+                if (classSize >= maxClassSize) {
+                    Toast.makeText(DataEntryActivity.this, "Класс заполнен", Toast.LENGTH_SHORT).show();
+                    classSizeNormal = false;
+                }
+                else {
+                    classSizeNormal = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

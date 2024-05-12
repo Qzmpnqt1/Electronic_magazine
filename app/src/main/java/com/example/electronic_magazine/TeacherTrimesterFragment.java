@@ -131,15 +131,8 @@ public class TeacherTrimesterFragment extends Fragment {
         binding.bDeleteOrRefactorFirstTrimester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
-                Bundle args = new Bundle();
-                args.putString("teacherSubject", subject);
-                args.putString("studentFullName", studentFullName);
-                args.putString("trimester", "firstTrimester");
-                fragment.setArguments(args);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainerView, fragment)
-                        .commit();
+                startDeleteOrRefactorFragment(subject, studentFullName, "firstTrimester",
+                        "Первый триместр");
             }
         });
         //------------------------------------------------------------------------------------------
@@ -156,15 +149,8 @@ public class TeacherTrimesterFragment extends Fragment {
         binding.bDeleteOrRefactorSecondTrimester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
-                Bundle args = new Bundle();
-                args.putString("teacherSubject", subject);
-                args.putString("studentFullName", studentFullName);
-                args.putString("trimester", "secondTrimester");
-                fragment.setArguments(args);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainerView, fragment)
-                        .commit();
+                startDeleteOrRefactorFragment(subject, studentFullName, "secondTrimester",
+                        "Второй триместр");
             }
         });
         //------------------------------------------------------------------------------------------
@@ -181,20 +167,28 @@ public class TeacherTrimesterFragment extends Fragment {
         binding.bDeleteOrRefactorThirdTrimester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
-                Bundle args = new Bundle();
-                args.putString("teacherSubject", subject);
-                args.putString("studentFullName", studentFullName);
-                args.putString("trimester", "thirdTrimester");
-                fragment.setArguments(args);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainerView, fragment)
-                        .commit();
+                startDeleteOrRefactorFragment(subject, studentFullName, "thirdTrimester",
+                        "Третий триместр");
             }
         });
         //------------------------------------------------------------------------------------------
 
         return view;
+    }
+
+    private void startDeleteOrRefactorFragment(String subject1, String studentFullName1, String trimester,
+                                               String trimesterName) {
+        DeleteOrRefactorFragment fragment = new DeleteOrRefactorFragment();
+        Bundle args = new Bundle();
+        args.putString("teacherSubject", subject1);
+        args.putString("studentFullName", studentFullName1);
+        args.putString("trimester", trimester);
+        args.putString("trimesterName", trimesterName);
+        fragment.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void loadGrades(String subject) {

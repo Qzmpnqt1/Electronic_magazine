@@ -1,6 +1,7 @@
 package com.example.electronic_magazine;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -29,7 +30,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
         String fragmentName = getIntent().getStringExtra("fragment_name");
         assert fragmentName != null;
         if (fragmentName.equals("teacherInterface")) {
-            DatabaseReference teacherRef = firebaseDatabase.getReference(Constant.TEACHERS).child(userId);
+            DatabaseReference teacherRef = firebaseDatabase.getReference("teachers").child(userId);
             teacherRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -83,8 +84,14 @@ public class UserInterfaceActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Обработка нажатия на кнопку "Назад" в ActionBar
+        if (item.getItemId() == android.R.id.home) {
+            // Здесь вы можете добавить логику для возврата к предыдущему фрагменту
+            // Например, вы можете использовать метод popBackStack() для возврата к предыдущему фрагменту в стеке фрагментов
+            getSupportFragmentManager().popBackStack();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

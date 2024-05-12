@@ -117,6 +117,7 @@ public class TeacherInterfaceFragment extends Fragment {
 
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainerView, teacherTrimesterFragment)
+                        .addToBackStack(null)
                         .commit();
             }
         });
